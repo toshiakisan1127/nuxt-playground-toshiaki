@@ -12,7 +12,7 @@ function isPageRequiringAuthenticated(path: string) {
 const confidentialPages = ["/authenticated"];
 
 async function isAuthenticated(): Promise<boolean> {
-  await sleep(2000);
+  await sleep(1000);
   return false;
 }
 
