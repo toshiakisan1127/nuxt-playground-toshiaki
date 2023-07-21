@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
   // isAuthenticated() is an example method verifying if a user is authenticated
   if (!(await isAuthenticated()) && isPageRequiringAuthenticated(to.fullPath)) {
-    return navigateTo("/login", { external: true });
+    return navigateTo("/login", { external: true, replace: true });
   }
 });
 
