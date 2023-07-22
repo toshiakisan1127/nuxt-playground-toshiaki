@@ -1,6 +1,9 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
   // isAuthenticated() is an example method verifying if a user is authenticated
-  if (!(await isAuthenticated()) && isPageRequiringAuthenticated(to.fullPath)) {
+  if (
+    !(await isAuthenticated(to.query.isLogin === "true")) &&
+    isPageRequiringAuthenticated(to.fullPath)
+  ) {
     return navigateTo("/login", { external: true, replace: true });
   }
 });
@@ -11,10 +14,8 @@ function isPageRequiringAuthenticated(path: string) {
 
 const confidentialPages = ["/authenticated"];
 
-async function isAuthenticated(): Promise<boolean> {
+async function isAuthenticated(isLogin: boolean): Promise<boolean> {
   await sleep(200);
-  const route = useRoute();
-  const isLogin = route.query.isLogin ? true : false;
   return isLogin;
 }
 
