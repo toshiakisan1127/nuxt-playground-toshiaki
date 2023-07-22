@@ -13,7 +13,9 @@ const confidentialPages = ["/authenticated"];
 
 async function isAuthenticated(): Promise<boolean> {
   await sleep(200);
-  return false;
+  const route = useRoute();
+  const isLogin = route.query.isLogin ? true : false;
+  return isLogin;
 }
 
 function sleep(ms: number): Promise<void> {
