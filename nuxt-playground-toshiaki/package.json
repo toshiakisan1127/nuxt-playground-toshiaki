@@ -12,5 +12,9 @@
     "@nuxt/devtools": "latest",
     "@types/node": "^18.16.19",
     "nuxt": "^3.6.5"
+  },
+  "dependencies": {
+    "sass": "^1.64.1",
+    "spinkit": "^2.0.1"
   }
 }
